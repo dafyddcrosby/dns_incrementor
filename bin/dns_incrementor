@@ -29,8 +29,7 @@ file_name = ARGV[0]
 begin
   zone = File.read(file_name)
 rescue
-  puts "Could not read #{file_name}"
-  exit 1
+  abort "Could not read #{file_name}"
 end
 if zone =~ /(?<date>20\d\d(0[1-9]|1[0-2])(0[1-9]|1\d|2\d|30|31))(?<num>\d\d)/
   match = Regexp.last_match(0)
@@ -44,7 +43,6 @@ if zone =~ /(?<date>20\d\d(0[1-9]|1[0-2])(0[1-9]|1\d|2\d|30|31))(?<num>\d\d)/
   begin
     File.open(file_name, 'w') {|file| file << zone}
   rescue
-    puts "Could not write to file #{file_name}"
-    exit 1
+    abort "Could not write to file #{file_name}"
   end
 end

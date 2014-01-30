@@ -12,6 +12,6 @@ Gem::Specification.new do |gem|
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.version       = '1.0.0'
+  gem.version       = '1.0.2'
   gem.required_ruby_version = '>= 1.9'
 end
