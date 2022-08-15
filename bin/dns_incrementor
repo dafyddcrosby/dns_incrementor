@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 # Copyright 2014 Dafydd Crosby
 # All rights reserved.
 
@@ -22,27 +24,27 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-require 'time'
+require "time"
 
 file_name = ARGV[0]
 
 begin
   zone = File.read(file_name)
-rescue
+rescue StandardError
   abort "Could not read #{file_name}"
 end
-if zone =~ /(?<date>20\d\d(0[1-9]|1[0-2])(0[1-9]|1\d|2\d|30|31))(?<num>\d\d)/
+if zone =~ /(?<date>20\d\d(0[1-9]|1[0-2])(0[1-9]|1\d|2\d|30|31))(?<num>\d\d)/ # rubocop:disable Lint/MixedRegexpCaptureTypes
   match = Regexp.last_match(0)
   date = Regexp.last_match[:date]
   num = Regexp.last_match[:num]
   today = Time.now.strftime("%Y%m%d")
   new_num = today.to_i > date.to_i ? 0 : num.to_i + 1
   # BUG - overflow possible after 99 iterations
-  new_serial = "%s%.2i" % [today, new_num]
+  new_serial = format("%<today>s%<new_sum>.2i", { today: today, new_sum: new_num })
   zone.gsub!(match, new_serial)
   begin
-    File.open(file_name, 'w') {|file| file << zone}
-  rescue
+    File.open(file_name, "w") { |file| file << zone }
+  rescue StandardError
     abort "Could not write to file #{file_name}"
   end
 end
