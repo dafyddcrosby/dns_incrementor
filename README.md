@@ -18,4 +18,4 @@ Usage
 Bugs
 ----
 
-It will overflow the serial if you make more than 100 revisions in a day (eg. 2014123199 -> 20141231100). If you need to make more than 100 revisions a day, then either you're doing something very wrong or you've got enough going on that maybe this script isn't for you.
+It will overflow the serial if you make more than 100 revisions in a day (eg. 2014123199 -> 20141231100). If you need to make more than 100 revisions a day, then either you're doing something wrong or you've got enough going on that maybe this script isn't for you.
