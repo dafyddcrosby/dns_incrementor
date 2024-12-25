@@ -9,4 +9,4 @@ permissions:
   contents: read
 jobs:
   rake:
-    uses: dafyddcrosby/dc-github-actions/actions/bundle_rake.yml@main
+    uses: dafyddcrosby/dc-github-actions/.github/workflows/bundle_rake.yml@main
