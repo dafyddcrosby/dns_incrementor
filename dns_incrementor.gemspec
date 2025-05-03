@@ -12,9 +12,9 @@ Gem::Specification.new do |gem|
 
   gem.license       = "bsd" # The (two-clause) BSD License
 
-  gem.files         = `git ls-files`.split($OUTPUT_RECORD_SEPARATOR)
+  gem.files         = File.read("Manifest.txt").split
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  gem.version       = "1.1.0"
+  gem.version       = "1.1.1"
   gem.required_ruby_version = ">= 3.0"
   gem.metadata["rubygems_mfa_required"] = "true"
 end
