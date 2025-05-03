@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "English"
 Gem::Specification.new do |gem|
   gem.name          = "dns_incrementor"
   gem.authors       = ["Dafydd Crosby"]
